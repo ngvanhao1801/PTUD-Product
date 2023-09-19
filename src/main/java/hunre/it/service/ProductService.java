@@ -1,23 +1,24 @@
 package hunre.it.service;
 
-import java.util.List;
-import java.util.Optional;
-
 import hunre.it.exception.DuplicateException;
+import hunre.it.exception.NotFoundException;
 import hunre.it.model.Product;
 import hunre.it.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
-import hunre.it.exception.NotFoundException;
-import jakarta.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
 public class ProductService {
 
-	@Autowired
-	private ProductRepository productRepository;
+	private final ProductRepository productRepository;
+
+	public ProductService(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
 
 	public List<Product> listAll() {
 		List<Product> products = productRepository.findAll();
