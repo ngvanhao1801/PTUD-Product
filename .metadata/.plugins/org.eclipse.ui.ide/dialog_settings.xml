@@ -17,6 +17,7 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="F:\PhatTrienUDHuongDichVu_Thu4\PTUD-Product"/>
 			<item value="D:\HUNRE\PhatTrienUDHuongDV"/>
 			<item value="D:\HUNRE\PhatTrienUDHuongDV\PTUD-Product"/>
 		</list>
