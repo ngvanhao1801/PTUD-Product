@@ -27,7 +27,6 @@
                 if (!response.ok) {
                     throw new Error('Failed to delete product');
                 }
-                return response.json();
             })
             .then(data => {
                 alert('Product deleted successfully');
