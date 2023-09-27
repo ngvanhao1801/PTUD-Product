@@ -16,12 +16,12 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Product {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Integer id;
 
-	private String name;
+  private String name;
 
-	private float price;
+  private float price;
 
 }

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Rest API</title>
+</head>
+<body>
+<div class="container">
+    <h1>Product List</h1>
+    <ul id="product-list">
+        <!--Danh sách sản phẩm được thêm vào bằng JavaScript -->
+    </ul>
+</div>
+
+<script>
+    //Sử dng JavaScript để gọi API và hiển thị dữ liệu
+    fetch('http://localhost:8080/products', {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            const productList = document.getElementById('product-list');
+            data.forEach(product => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+              <strong>ID:</strong> ${product.id}<br>
+              <strong>Name:</strong> ${product.name}<br>
+              <strong>Price:</strong> ${product.price}<br>
+        `;
+                productList.appendChild(listItem);
+            });
+        })
+        .catch(error => console.error('Error:', error))
+</script>
+</body>
+</html>

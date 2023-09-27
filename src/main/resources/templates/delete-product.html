@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Rest API</title>
+</head>
+<body>
+<h1>Delete Product</h1>
+<form id="product-form">
+    <label for="product-id">Product ID:</label>
+    <input type="text" id="product-id" required>
+    <button type="submit">Delete Product</button>
+</form>
+
+<script>
+    const productForm = document.getElementById('product-form');
+
+    productForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const productId = document.getElementById('product-id').value;
+
+        fetch(`http://localhost:8080/products/${productId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete product');
+                }
+            })
+            .then(data => {
+                alert('Product deleted successfully');
+                window.location.href = "index.html";
+            })
+            .catch(error => {
+                console.error('Error', error);
+                alert('Failed to delete product');
+            });
+    });
+</script>
+</body>
+</html>

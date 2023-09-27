@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-	boolean existsByName(String name);
-	
-	boolean existsById(Integer id);
+  boolean existsByName(String name);
 
-	boolean existsByNameAndIdNot(String name, Integer id);
+  boolean existsById(Integer id);
+
+  boolean existsByNameAndIdNot(String name, Integer id);
 }

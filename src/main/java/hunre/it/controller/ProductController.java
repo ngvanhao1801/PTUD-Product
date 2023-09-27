@@ -10,40 +10,46 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class ProductController {
 
-	private final ProductService productService;
+  private final ProductService productService;
 
-	public ProductController(ProductService productService) {
-		this.productService = productService;
-	}
+  public ProductController(ProductService productService) {
+    this.productService = productService;
+  }
 
-	@GetMapping("/products")
-	public List<?> list() {
-		return productService.listAll();
-	}
 
-	@GetMapping("/products/{id}")
-	public ResponseEntity<?> findById(@PathVariable("id") Integer id) {
-		Optional<?> product = productService.findById(id);
-		return ResponseEntity.ok(product);
-	}
+  @GetMapping("/products")
+  public List<?> list() {
 
-	@PostMapping("/products")
-	public ResponseEntity<?> createNewProduct(@RequestBody Product product) {
+    return productService.listAll();
+  }
 
-		return new ResponseEntity<>(productService.save(product), HttpStatus.OK);
-	}
+  @GetMapping("/products/{id}")
+  public ResponseEntity<?> findById(@PathVariable("id") Integer id) {
+    Optional<?> product = productService.findById(id);
 
-	@PutMapping("/products/{id}")
-	public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody Product product) {
-		Product updatedProduct = productService.updateProduct(id, product);
-		return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
-	}
+    return ResponseEntity.ok(product);
+  }
 
-	@DeleteMapping("/products/{id}")
-	public ResponseEntity<?> delete(@PathVariable Integer id) {
-		productService.delete(id);
-		return new ResponseEntity<>("Đã xóa thành công", HttpStatus.OK);
-	}
+  @PostMapping("/products")
+  public ResponseEntity<?> createNewProduct(@RequestBody Product product) {
+
+    return new ResponseEntity<>(productService.save(product), HttpStatus.OK);
+  }
+
+  @PutMapping("/products/{id}")
+  public ResponseEntity<?> updateProduct(@PathVariable Integer id, @RequestBody Product product) {
+    Product updatedProduct = productService.updateProduct(id, product);
+
+    return new ResponseEntity<>(updatedProduct, HttpStatus.OK);
+  }
+
+  @DeleteMapping("/products/{id}")
+  public ResponseEntity<?> delete(@PathVariable Integer id) {
+    productService.delete(id);
+
+    return new ResponseEntity<>("Đã xóa thành công", HttpStatus.OK);
+  }
 }
